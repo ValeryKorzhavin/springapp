@@ -1,10 +1,12 @@
 package com.company.springapp;
 
 import com.company.springapp.config.WebApplicationConfig;
-import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+import org.springframework.web.servlet.support
+        .AbstractAnnotationConfigDispatcherServletInitializer;
 
-public class DispatcherServletInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
-    
+public class DispatcherServletInitializer extends
+        AbstractAnnotationConfigDispatcherServletInitializer {
+
     @Override
     protected Class<?>[] getRootConfigClasses() {
         return null;
