@@ -1,6 +1,5 @@
 package com.company.springapp.config;
 
-
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.hibernate.SessionFactory;
 import org.springframework.context.annotation.Bean;

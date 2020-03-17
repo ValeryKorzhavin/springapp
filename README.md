@@ -17,5 +17,5 @@
 
 ### Migrations
 ```shell script
-$ make generate-migration 
+$ make apply-migration
 ```

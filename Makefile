@@ -13,5 +13,5 @@ update:
 test:
 	./mvnw clean test
 
-generate-migration:
+apply-migration:
 	 ./mvnw clean compile liquibase:update -DskipTests=true
