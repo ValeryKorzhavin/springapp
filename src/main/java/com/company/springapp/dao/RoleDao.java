@@ -3,15 +3,16 @@ package com.company.springapp.dao;
 import com.company.springapp.domain.Role;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface RoleDao {
 
     List<Role> findAll();
 
-    Role getRole(Long id);
+    Optional<Role> getRole(long id);
 
     void saveRole(Role role);
 
-    void deleteRole(Long id);
+    void deleteRole(long id);
 
 }

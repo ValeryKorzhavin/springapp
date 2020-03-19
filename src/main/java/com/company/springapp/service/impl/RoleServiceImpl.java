@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
-@Transactional
 @AllArgsConstructor
 public class RoleServiceImpl implements RoleService {
 
@@ -24,17 +24,19 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     @Transactional(readOnly = true)
-    public Role getRole(Long id) {
+    public Optional<Role> getRole(long id) {
         return roleDao.getRole(id);
     }
 
     @Override
+    @Transactional
     public void saveRole(Role role) {
         roleDao.saveRole(role);
     }
 
     @Override
-    public void deleteRole(Long id) {
+    @Transactional
+    public void deleteRole(long id) {
         roleDao.deleteRole(id);
     }
 

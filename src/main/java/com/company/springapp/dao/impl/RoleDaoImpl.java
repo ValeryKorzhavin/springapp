@@ -9,6 +9,7 @@ import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 @AllArgsConstructor
@@ -24,9 +25,9 @@ public class RoleDaoImpl implements RoleDao {
     }
 
     @Override
-    public Role getRole(Long id) {
+    public Optional<Role> getRole(long id) {
         Session session = sessionFactory.getCurrentSession();
-        return session.get(Role.class, id);
+        return Optional.ofNullable(session.get(Role.class, id));
     }
 
     @Override
@@ -36,7 +37,7 @@ public class RoleDaoImpl implements RoleDao {
     }
 
     @Override
-    public void deleteRole(Long id) {
+    public void deleteRole(long id) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("delete from Role where id=:roleId");
         query.setParameter("roleId", id);

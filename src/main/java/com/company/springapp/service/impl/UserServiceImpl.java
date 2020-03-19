@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
-@Transactional
 @AllArgsConstructor
 public class UserServiceImpl implements UserService {
 
@@ -22,19 +22,22 @@ public class UserServiceImpl implements UserService {
         return userDao.findAll();
     }
 
+
     @Override
     @Transactional(readOnly = true)
-    public User getUser(Long id) {
+    public Optional<User> getUser(long id) {
         return userDao.getUser(id);
     }
 
     @Override
+    @Transactional
     public void saveUser(User user) {
         userDao.saveUser(user);
     }
 
     @Override
-    public void deleteUser(Long id) {
+    @Transactional
+    public void deleteUser(long id) {
         userDao.deleteUser(id);
     }
 

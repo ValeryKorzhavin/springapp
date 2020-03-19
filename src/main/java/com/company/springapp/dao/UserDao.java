@@ -3,6 +3,7 @@ package com.company.springapp.dao;
 import com.company.springapp.domain.User;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserDao {
 
@@ -10,8 +11,8 @@ public interface UserDao {
 
     void saveUser(User user);
 
-    User getUser(Long id);
+    Optional<User> getUser(long id);
 
-    void deleteUser(Long id);
+    void deleteUser(long id);
 
 }

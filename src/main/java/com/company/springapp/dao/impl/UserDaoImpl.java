@@ -9,6 +9,7 @@ import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 @AllArgsConstructor
@@ -30,15 +31,16 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public User getUser(Long id) {
+    public Optional<User> getUser(long id) {
         Session currentSession = sessionFactory.getCurrentSession();
-        return currentSession.get(User.class, id);
+        return Optional.ofNullable(currentSession.get(User.class, id));
     }
 
     @Override
-    public void deleteUser(Long id) {
+    public void deleteUser(long id) {
         Session currentSession = sessionFactory.getCurrentSession();
-        Query query = currentSession.createQuery("delete from User where id=:userId");
+        Query query = currentSession
+                .createQuery("delete from User where id=:userId");
         query.setParameter("userId", id);
         query.executeUpdate();
     }

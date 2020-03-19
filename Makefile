@@ -1,8 +1,13 @@
 
-.DEFAULT_GOAL := build
+.DEFAULT_GOAL := build-run
+
+run:
+	java -jar ./target/springapp-*.jar
 
 clean:
 	rm -rf ./target
+
+build-run: build run
 
 build:
 	./mvnw clean package

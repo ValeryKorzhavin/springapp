@@ -6,7 +6,7 @@ public class RoleNotFoundException extends RuntimeException {
 
     private String message;
 
-    public RoleNotFoundException(Long id) {
+    public RoleNotFoundException(long id) {
         super(String.format(ROLE_NOT_FOUND, id));
         message = String.format(ROLE_NOT_FOUND, id);
     }
