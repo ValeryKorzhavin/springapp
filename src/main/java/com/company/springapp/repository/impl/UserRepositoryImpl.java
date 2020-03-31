@@ -1,7 +1,7 @@
-package com.company.springapp.dao.impl;
+package com.company.springapp.repository.impl;
 
-import com.company.springapp.dao.UserDao;
 import com.company.springapp.domain.User;
+import com.company.springapp.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -13,7 +13,7 @@ import java.util.Optional;
 
 @Repository
 @AllArgsConstructor
-public class UserDaoImpl implements UserDao {
+public class UserRepositoryImpl implements UserRepository {
 
     private SessionFactory sessionFactory;
 
@@ -37,12 +37,19 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
+    public Optional<User> getByUsername(String username) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query<User> query = currentSession.createQuery("from User where name = :username");
+        query.setParameter("username", username);
+        return Optional.ofNullable(query.getSingleResult());
+    }
+
+    @Override
     public void deleteUser(long id) {
         Session currentSession = sessionFactory.getCurrentSession();
-        Query query = currentSession
-                .createQuery("delete from User where id=:userId");
+        Query query = currentSession.createQuery("delete from User where id = :userId");
         query.setParameter("userId", id);
         query.executeUpdate();
     }
-    
+
 }

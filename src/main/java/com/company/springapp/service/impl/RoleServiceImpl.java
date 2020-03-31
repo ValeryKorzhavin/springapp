@@ -1,7 +1,7 @@
 package com.company.springapp.service.impl;
 
-import com.company.springapp.dao.RoleDao;
 import com.company.springapp.domain.Role;
+import com.company.springapp.repository.RoleRepository;
 import com.company.springapp.service.RoleService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ import java.util.Optional;
 @AllArgsConstructor
 public class RoleServiceImpl implements RoleService {
 
-    private RoleDao roleDao;
+    private RoleRepository roleDao;
 
     @Override
     @Transactional(readOnly = true)

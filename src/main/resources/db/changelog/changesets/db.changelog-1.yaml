@@ -21,6 +21,11 @@ databaseChangeLog:
               - column:
                   constraints:
                     nullable: false
+                  name: password
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
                   name: role_id
                   type: BIGINT
             schemaName: springapp
@@ -50,6 +55,8 @@ databaseChangeLog:
                   name: name
                   type: VARCHAR(255)
               - column:
+                  constraints:
+                    nullable: false
                   name: ext_id
                   type: VARCHAR(255)
             schemaName: springapp
@@ -106,7 +113,7 @@ databaseChangeLog:
                   value: "ADMIN"
               - column:
                   name: ext_id
-                  value: "ROLE"
+                  value: "ADMIN"
         - insert:
             tableName: dictionary
             schemaName: springapp
@@ -122,7 +129,7 @@ databaseChangeLog:
                   value: "USER"
               - column:
                   name: ext_id
-                  value: "ROLE"
+                  value: "USER"
 
   - changeSet:
       id: 6
@@ -140,5 +147,30 @@ databaseChangeLog:
                   name: name
                   value: "admin"
               - column:
+                  name: password
+                  value: "$2a$06$3U0ZYnpHZVVQJqVapDGCVOcmOCpiMIHZs/TTqgFeWPYhgPWz8FrSK"
+              - column:
                   name: role_id
                   value: 1
+
+  - changeSet:
+      id: 7
+      author: valery.korzh
+      comment: "create user"
+      changes:
+        - insert:
+            tableName: user
+            schemaName: springapp
+            columns:
+              - column:
+                  name: id
+                  value: 2
+              - column:
+                  name: name
+                  value: "user"
+              - column:
+                  name: password
+                  value: "$2a$06$vVFTQAMMCDWEG/rSiCmaWubG8WAYZUVN1z/anPTCKRE/wUB42k.se"
+              - column:
+                  name: role_id
+                  value: 2

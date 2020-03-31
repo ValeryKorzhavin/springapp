@@ -1,19 +1,14 @@
 package com.company.springapp.domain;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Data
 @Table(name = "user", schema = "springapp")
+@Getter
+@Setter
 public class User {
 
     @Id
@@ -23,14 +18,11 @@ public class User {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "password")
+    private String password;
+
     @ManyToOne
     @JoinColumn(name = "role_id", nullable = false)
     private Role role;
-
-    public User() {}
-
-    public User(String name) {
-        this.name = name;
-    }
 
 }

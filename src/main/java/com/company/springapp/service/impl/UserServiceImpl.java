@@ -1,7 +1,7 @@
 package com.company.springapp.service.impl;
 
-import com.company.springapp.dao.UserDao;
 import com.company.springapp.domain.User;
+import com.company.springapp.repository.UserRepository;
 import com.company.springapp.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ import java.util.Optional;
 @AllArgsConstructor
 public class UserServiceImpl implements UserService {
 
-    private UserDao userDao;
+    private UserRepository userDao;
 
     @Override
     @Transactional(readOnly = true)
@@ -27,6 +27,11 @@ public class UserServiceImpl implements UserService {
     @Transactional(readOnly = true)
     public Optional<User> getUser(long id) {
         return userDao.getUser(id);
+    }
+
+    @Override
+    public Optional<User> findUserByUsername(String username) {
+        return userDao.getByUsername(username);
     }
 
     @Override

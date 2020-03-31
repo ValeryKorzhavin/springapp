@@ -1,7 +1,8 @@
-package com.company.springapp.dao.impl;
+package com.company.springapp.repository.impl;
 
-import com.company.springapp.dao.RoleDao;
 import com.company.springapp.domain.Role;
+import com.company.springapp.repository.RoleRepository;
+
 import lombok.AllArgsConstructor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -13,7 +14,7 @@ import java.util.Optional;
 
 @Repository
 @AllArgsConstructor
-public class RoleDaoImpl implements RoleDao {
+public class RoleRepositoryImpl implements RoleRepository {
 
     private SessionFactory sessionFactory;
 

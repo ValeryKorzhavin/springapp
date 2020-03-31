@@ -1,11 +1,11 @@
-package com.company.springapp.dao;
+package com.company.springapp.repository;
 
 import com.company.springapp.domain.Role;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface RoleDao {
+public interface RoleRepository {
 
     List<Role> findAll();
 
